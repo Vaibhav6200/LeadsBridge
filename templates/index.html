@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Facebook Integration {% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div class="container mt-5">
+        <h1>Welcome to Facebook Integrations</h1>
+        <p>Click the button below to authenticate with Facebook and manage your integrations.</p>
+        <a href="{% url 'integrations:get_facebook_auth_url' %}" class="btn btn-primary">Connect with Facebook</a>
+    </div>
+
+{% endblock %}

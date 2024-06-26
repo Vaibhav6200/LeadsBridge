@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Manage Integration {% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Manage Your Integrations</h1>
+        <p>Below are your current integrations:</p>
+
+        {% if integrations %}
+            <ul class="list-group mb-3">
+            {% for integration in integrations %}
+                <li class="list-group-item">
+                    Integration: {{ integration.name }} <br>
+                    Status: {{ integration.status }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No integrations found. Connect your Facebook account to add integrations.</p>
+        {% endif %}
+
+        <a href="{% url 'integrations:get_facebook_auth_url' %}" class="btn btn-primary">Connect More Integrations</a>
+        <a href="{% url 'integrations:index' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+{% endblock %}
