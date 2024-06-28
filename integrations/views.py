@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 def webhook(request):
     if request.method == 'GET':
         # Verification step
+        print()
+        print("WE ARE IN WEBHOOK GET REQUEST")
+        print()
         mode = request.GET.get('hub.mode')
         token = request.GET.get('hub.verify_token')
         challenge = request.GET.get('hub.challenge')
