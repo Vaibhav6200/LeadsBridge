@@ -17,10 +17,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 FACEBOOK_APP_ID = '440745412055851'
 FACEBOOK_APP_SECRET = '73ac025305291608e94b96c005b32b2d'
+
 SOCIAL_AUTH_FACEBOOK_KEY = '440745412055851'
 SOCIAL_AUTH_FACEBOOK_SECRET = '73ac025305291608e94b96c005b32b2d'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile']  # Add other scopes/permissions
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -163,4 +168,16 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',  # Associates users by email
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
 )
