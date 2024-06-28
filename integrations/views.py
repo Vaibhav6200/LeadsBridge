@@ -20,6 +20,8 @@ def webhook(request):
                 return HttpResponse(challenge)
             else:
                 return HttpResponse(status=403)
+        else:
+            return HttpResponse("Invalid request", status=400)
 
     if request.method == 'POST':
         # Handle the incoming webhook data
