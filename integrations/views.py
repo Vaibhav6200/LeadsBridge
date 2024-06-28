@@ -49,7 +49,7 @@ def index(request):
 
 
 def get_facebook_auth_url(request):
-    redirect_uri = "https://yourcallbackurl.com"  # Make sure this is the correct URL registered with Facebook
+    redirect_uri = "https://leadsbridge.pythonanywhere.com/webhook/"  # Make sure this is the correct URL registered with Facebook
     facebook = OAuth2Session(settings.FACEBOOK_APP_ID, redirect_uri=redirect_uri)
     authorization_url, state = facebook.authorization_url('https://www.facebook.com/dialog/oauth')
 
