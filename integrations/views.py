@@ -39,7 +39,7 @@ def webhook(request):
         logger.info(f"Received webhook data: {data}")
 
         print(data)
-        return JsonResponse({'status': 'success'}, status=200)
+        return JsonResponse({'status': 'success', 'data': data}, status=200)
 
     return HttpResponse(status=404)
 
