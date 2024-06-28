@@ -9,17 +9,13 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Configure logging
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 @csrf_exempt
 def webhook(request):
     if request.method == 'GET':
         # Verification step
-        print()
-        logger.info("WEBHOOK GET REQUEST CALLED")
-        print("WE ARE IN WEBHOOK GET REQUEST")
-        print()
         mode = request.GET.get('hub.mode')
         token = request.GET.get('hub.verify_token')
         challenge = request.GET.get('hub.challenge')
@@ -36,8 +32,6 @@ def webhook(request):
         # Handle the incoming webhook data
         data = json.loads(request.body.decode('utf-8'))
         # Process your data here
-        logger.info(f"Received webhook data: {data}")
-
         print(data)
         return JsonResponse({'status': 'success', 'data': data}, status=200)
 
