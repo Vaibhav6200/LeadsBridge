@@ -17,6 +17,7 @@ def webhook(request):
     if request.method == 'GET':
         # Verification step
         print()
+        logger.info("Received webhook data")
         print("WE ARE IN WEBHOOK GET REQUEST")
         print()
         mode = request.GET.get('hub.mode')
