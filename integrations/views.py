@@ -48,6 +48,10 @@ def index(request):
     return render(request, 'index.html')
 
 
+def login_view(request):
+    return render(request, 'login.html')
+
+
 def get_facebook_auth_url(request):
     redirect_uri = "https://leadsbridge.pythonanywhere.com/"
     facebook = OAuth2Session(settings.FACEBOOK_APP_ID, redirect_uri=redirect_uri)
