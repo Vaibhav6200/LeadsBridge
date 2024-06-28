@@ -15,8 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-FACEBOOK_APP_ID = '845816217420851'
-FACEBOOK_APP_SECRET = '784407dbbb0bd82635098136df2ab13b'
+FACEBOOK_APP_ID = '440745412055851'
+FACEBOOK_APP_SECRET = '73ac025305291608e94b96c005b32b2d'
 
 
 # Quick-start development settings - unsuitable for production
