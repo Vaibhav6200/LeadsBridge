@@ -17,7 +17,7 @@ def webhook(request):
     if request.method == 'GET':
         # Verification step
         print()
-        logger.info("Received webhook data")
+        logger.info("WEBHOOK GET REQUEST CALLED")
         print("WE ARE IN WEBHOOK GET REQUEST")
         print()
         mode = request.GET.get('hub.mode')
@@ -36,7 +36,7 @@ def webhook(request):
         # Handle the incoming webhook data
         data = json.loads(request.body.decode('utf-8'))
         # Process your data here
-        logger.info("Received webhook data: %s", data)
+        logger.info(f"Received webhook data: {data}")
 
         print(data)
         return JsonResponse({'status': 'success'}, status=200)
