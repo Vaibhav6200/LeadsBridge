@@ -2,6 +2,33 @@ from django.shortcuts import render, redirect
 from requests_oauthlib import OAuth2Session
 from django.conf import settings
 from .models import Integration
+from django.http import JsonResponse, HttpResponse
+import json
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def webhook(request):
+    if request.method == 'GET':
+        # Verification step
+        mode = request.GET.get('hub.mode')
+        token = request.GET.get('hub.verify_token')
+        challenge = request.GET.get('hub.challenge')
+
+        if mode and token:
+            if mode == 'subscribe' and token == 'VAIBHAV_VERIFICATION_TOKEN':
+                return HttpResponse(challenge)
+            else:
+                return HttpResponse(status=403)
+
+    if request.method == 'POST':
+        # Handle the incoming webhook data
+        data = json.loads(request.body.decode('utf-8'))
+        # Process your data here
+        print(data)
+        return JsonResponse({'status': 'success'}, status=200)
+
+    return HttpResponse(status=404)
 
 
 def index(request):

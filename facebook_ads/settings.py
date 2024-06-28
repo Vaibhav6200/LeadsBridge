@@ -30,6 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# settings.py
+CSRF_TRUSTED_ORIGINS = [
+    'https://your-domain.com',
+]
 
 # Application definition
 
