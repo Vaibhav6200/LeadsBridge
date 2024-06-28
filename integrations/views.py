@@ -4,7 +4,12 @@ from django.conf import settings
 from .models import Integration
 from django.http import JsonResponse, HttpResponse
 import json
+import logging
 from django.views.decorators.csrf import csrf_exempt
+
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 
 @csrf_exempt
@@ -30,6 +35,8 @@ def webhook(request):
         # Handle the incoming webhook data
         data = json.loads(request.body.decode('utf-8'))
         # Process your data here
+        logger.info("Received webhook data: %s", data)
+
         print(data)
         return JsonResponse({'status': 'success'}, status=200)
 
